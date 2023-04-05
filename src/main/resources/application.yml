@@ -1,7 +1,7 @@
 spring.datasource:
-  url: jdbc:postgresql://localhost:5432/mydatabase
-  username: myuser
-  password: mysecretpassword
+  url: jdbc:postgresql://localhost:5432/postgres2
+  username: postgres
+  password: admin
 spring.jpa:
   hibernate.ddl-auto: update
   defer-datasource-initialization: true
