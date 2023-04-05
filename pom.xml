@@ -58,6 +58,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>spring-ci-cd-new</finalName>
     </build>
 
 </project>
