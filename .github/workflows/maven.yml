@@ -18,6 +18,16 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: myuser
+          POSTGRES_PASSWORD: mypassword
+          POSTGRES_DB: mydb
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v3
@@ -35,6 +45,10 @@ jobs:
       with:
         image: axror/spring-ci-cd-new
         tags: latest
+        build-args: |
+          DB_URL=jdbc:postgresql://localhost:5432/mydb
+          DB_USERNAME=myuser
+          DB_PASSWORD=mypassword
         registry: docker.io
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
