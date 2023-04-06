@@ -23,7 +23,7 @@ jobs:
         env:
           POSTGRES_USER: myuser
           POSTGRES_PASSWORD: mypassword
-          POSTGRES_DB: mydb
+          POSTGRES_DB: mydatabase
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
@@ -45,7 +45,7 @@ jobs:
         image: axror/spring-ci-cd-new
         tags: latest
         build-args: |
-          DB_URL=jdbc:postgresql://localhost:5432/mydb
+          DB_URL=jdbc:postgresql://db:5432/mydatabase
           DB_USERNAME=myuser
           DB_PASSWORD=mypassword
         registry: docker.io
